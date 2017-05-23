@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="rus">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homework</title>
+</head>
+<body>
+<h1>Задача про яблоки</h1>
+<div id="pApples"><label>Количество яблок у Пети </label><input type="number" id="petya" value="0"></div>
+<div id="mApples"><label>Количество яблок у Маши </label><input type="number" id="masha" value="0"></div>
+<p>Количество яблок у Димы: 8</p>
+<div id="count"><input type="button" onclick="appleF()" value="Рассчитать"></div>
+<p>Количество яблок у Пети: <span id="petyaItog"></span></p>
+<p>Количество яблок у Маши: <span id="mashaItog"></span></p>
+<p>Количество яблок у Димы: <span id="dimaItog"></span></p>
+
+<script>
+    function appleF() {
+        var n = parseInt (document.getElementById('petya').value); // кол-во яблок у Пети
+        var m = parseInt (document.getElementById('masha').value); // кол-во яблок у Маши
+        var d = 8;
+
+        if (n < m){
+            n = n + Math.ceil(m / 2);
+            m = m - Math.ceil(m / 2);
+
+            if (m < 5){
+                m = m + 2;
+                d = d - 2;
+
+                if (n >= 7){
+                    n = n - 7;
+
+                    if (n >= 10){
+                        d = d + 10;
+                        n = n - 10;
+                    } else {
+                        d = d + 2;
+                        m = m - 2;
+                    }
+                } else {
+                    n = 0;
+                }
+            }
+        }
+        document.getElementById('petyaItog').innerHTML = n;
+        document.getElementById('mashaItog').innerHTML = m;
+        document.getElementById('dimaItog').innerHTML = d;
+    }
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
